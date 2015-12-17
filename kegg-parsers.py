@@ -61,9 +61,9 @@ def iterate_taxa(taxon_ids,output):
             for i in geneids:
                 outfile.write(i+"\n")
             outfile.close()
-            for i in geneids:
-                get_singlegene(taxon,i,output)
-                time.sleep(0.1)
+        for i in geneids:
+            get_singlegene(taxon,i,output)
+            time.sleep(0.1)
 
 
 def get_genelist(taxon):
