@@ -79,6 +79,7 @@ def get_genelist(taxon):
 
 def get_singlegene(taxon,gene_name,output):
     if not os.path.exists(output+taxon+"/"+gene_name+".txt"):
+        print "download\t" + taxon + "\t" + gene_name
         outfile = open(output+taxon+"/"+gene_name+".txt","w")
         url = gene_link + gene_name
         response = requests.get(url)
