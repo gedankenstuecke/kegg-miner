@@ -70,7 +70,7 @@ def iterate_taxa(taxon_ids,output):
                 geneids.append(i.strip())
         # nope, no files here yet, so we get the list from KEGG.
         else:
-            while geneids = [] and retries < 5:
+            while geneids == [] and retries < 5:
                 print "genelist\t" + taxon + "\t" + str(retries)
                 geneids = get_genelist(taxon)
                 retries += 1
