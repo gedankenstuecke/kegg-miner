@@ -59,6 +59,7 @@ def iterate_taxa(taxon_ids,output):
         output += "/"
     for taxon in taxon_ids:
         geneids = []
+        retries = 0
         # ok, let's start to look for the taxon files
         # do we have the gene list already? great, we
         # just parse it and we're good to go.
@@ -69,8 +70,10 @@ def iterate_taxa(taxon_ids,output):
                 geneids.append(i.strip())
         # nope, no files here yet, so we get the list from KEGG.
         else:
+            while geneids = [] and retries < 5:
+                geneids = get_genelist(taxon)
+                retries += 1
             outfile = open(output+taxon+"/geneids.txt","w")
-            geneids = get_genelist(taxon)
             # let's write the gene-IDs to a file so we don't hit
             # KEGG for a second time
             for i in geneids:
@@ -103,9 +106,9 @@ def get_singlegene(taxon,gene_name,output):
     # we're not doing any parsing here, to keep things up to speed
     if not os.path.exists(output+taxon+"/"+gene_name+".txt"):
         print "download\t" + taxon + "\t" + gene_name
-        outfile = open(output+taxon+"/"+gene_name+".txt","w")
         url = gene_link + gene_name
         response = requests.get(url)
+        outfile = open(output+taxon+"/"+gene_name+".txt","w")
         outfile.write(response.content)
         outfile.close()
 
