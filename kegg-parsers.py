@@ -71,6 +71,7 @@ def iterate_taxa(taxon_ids,output):
         # nope, no files here yet, so we get the list from KEGG.
         else:
             while geneids = [] and retries < 5:
+                print "genelist\t" + taxon + "\t" + str(retries)
                 geneids = get_genelist(taxon)
                 retries += 1
             outfile = open(output+taxon+"/geneids.txt","w")
