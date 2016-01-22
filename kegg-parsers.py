@@ -118,6 +118,7 @@ def main():
     taxon_ids = get_organisms(organism_link,outputdir)
     print taxon_ids
     iterate_taxa(taxon_ids,outputdir)
+    print "DONE"
 
 if __name__ == "__main__":
     main()
